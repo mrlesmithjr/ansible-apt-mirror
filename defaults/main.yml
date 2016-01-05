@@ -1,16 +1,36 @@
 ---
 # defaults file for ansible-apt-mirror
+apache2_default_root: /var/www/html
+apt_mirror_apache_links:  #defines the uri of each repository used in apt_mirror_repos..ex. http://archive.ubuntu.com/ubuntu will be archive.ubuntu.com/ubuntu
+  - uri: archive.ubuntu.com/ubuntu/
+    distro: ubuntu
 apt_mirror_dir: /myrepo  #define directory to use as repo
 apt_mirror_nthreads: 20  #defines the number of threads
 apt_mirror_populate_repos: true  #defines if repos should be populated
 apt_mirror_repos:  #define list of repos to add
-  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse'
-  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted universe multiverse'
-  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-proposed main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse'
-  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse'
-  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted universe multiverse'
-  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted universe multiverse'
-#  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-proposed main restricted universe multiverse'
-#  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse'
+## Ubuntu Trusty (14.04)
+  - 'deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
+  - 'deb http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
+  - 'deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
+#  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
+#  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+## Ubuntu Precise (12.04)
+#  - 'deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu precise-security main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse'
+apt_mirror_schedule:
+  - name: 'apt-mirror updates'
+    special_time: daily  #defines easy schedule....can be hourly, daily, weekly, monthly, annually, yearly or reboot..comment out if setting specific times
+#    minute: 0
+#    hour: *
+#    day: *
+#    month: *
+#    weekday: *
+    job: '/usr/bin/apt-mirror > /var/spool/apt-mirror/var/cron.log'
+    cron_file: apt_mirror_updates
+apt_mirror_schedule_updates: true  #defines if repos should be updates on a schedule...defined in apt_mirror_schedule
