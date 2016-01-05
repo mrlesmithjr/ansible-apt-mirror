@@ -38,6 +38,7 @@
     user: "apt-mirror"
     job: "{{ item.job }}"
     cron_file: "{{ item.cron_file }}"
+  with_items: apt_mirror_schedule
   when: >
         apt_mirror_schedule_updates is defined and
         apt_mirror_schedule_updates
