@@ -1,0 +1,12 @@
+---
+- name: debian | installing packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-mirror
+
+- name: debian | ensuring apt_mirror_dir exists
+  file:
+    dest: "{{ apt_mirror_dir }}"
+    state: directory

@@ -1,0 +1,9 @@
+---
+- name: installing apt-mirror
+  hosts: all
+  sudo: true
+  vars:
+  roles:
+    - role: ansible-apache2
+    - role: ansible-apt-mirror
+  tasks:
