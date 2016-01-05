@@ -6,6 +6,8 @@ Installs and configures apt-mirror (Local APT Repository). Also configures clien
 Requirements
 ------------
 
+Lot's of disk space required for repos...At time of putting this together Ubuntu Trusty w/defaults in this role requires 139GB+
+
 Install Ansible role requirements
 ````
 sudo ansible-galaxy install -r requirements.yml -f
@@ -22,7 +24,11 @@ Docker
 ------
 Spin up Docker container (apt mirror repos not populated...will update on cron schedule)
 ````
-docker run -d -p 80:80 mrlesmithjr/apt-mirror
+docker run -d -p 80:80 --name apt-mirror mrlesmithjr/apt-mirror
+````
+To immediately update cache (Will take a long time...so do not cancel)
+````
+docker exec -it apt-mirror apt-mirror
 ````
 
 Role Variables
