@@ -22,4 +22,6 @@
 
 - name: debian | populating repos
   command: "apt-mirror"
-  when: apt_repos_updated.changed and (apt_mirror_populate_repos is defined and apt_mirror_populate_repos)
+  when: >
+        apt_repos_updated.changed and
+        (apt_mirror_populate_repos is defined and apt_mirror_populate_repos)
