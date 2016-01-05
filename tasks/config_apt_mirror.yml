@@ -11,8 +11,9 @@
     owner: root
     group: root
     mode: 0644
-  register: apt_repos_updated
-
+#  register: apt_repos_updated
+  notify: populate repos
+  
 #- name: config_apt_mirror | populating repos
 #  command: "apt-mirror"
 #  when: >
