@@ -2,3 +2,10 @@
 # tasks file for ansible-apt-mirror
 - include: debian.yml
   when: ansible_os_family == "Debian"
+
+- include: config_apt_mirror.yml
+
+- include: config_apt_mirror_schedule.yml
+  when: apt_mirror_schedule_updates is defined and apt_mirror_schedule_updates
+
+- include: config_apache2_symlinks.yml

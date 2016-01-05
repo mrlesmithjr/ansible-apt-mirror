@@ -6,7 +6,7 @@ apt_mirror_apache_links:  #defines the uri of each repository used in apt_mirror
     distro: ubuntu
 apt_mirror_dir: /myrepo  #define directory to use as repo
 apt_mirror_nthreads: 20  #defines the number of threads
-apt_mirror_populate_repos: true  #defines if repos should be populated
+apt_mirror_populate_repos: true  #defines if repos should be populated during install..can set to false and allow cron job to populate.
 apt_mirror_repos:  #define list of repos to add
 ## Ubuntu Trusty (14.04)
   - 'deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
@@ -32,5 +32,5 @@ apt_mirror_schedule:
 #    month: *
 #    weekday: *
     job: '/usr/bin/apt-mirror > /var/spool/apt-mirror/var/cron.log'
-    cron_file: apt_mirror_updates
+    cron_file: apt-mirror
 apt_mirror_schedule_updates: true  #defines if repos should be updates on a schedule...defined in apt_mirror_schedule

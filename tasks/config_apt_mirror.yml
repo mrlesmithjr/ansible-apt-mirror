@@ -1,0 +1,20 @@
+---
+- name: config_apt_mirror | ensuring apt_mirror_dir exists
+  file:
+    dest: "{{ apt_mirror_dir }}"
+    state: directory
+
+- name: config_apt_mirror | configuring apt-mirror
+  template:
+    src: "etc/apt/mirror.list.j2"
+    dest: "/etc/apt/mirror.list"
+    owner: root
+    group: root
+    mode: 0644
+  register: apt_repos_updated
+
+#- name: config_apt_mirror | populating repos
+#  command: "apt-mirror"
+#  when: >
+#        apt_repos_updated.changed and
+#        (apt_mirror_populate_repos is defined and apt_mirror_populate_repos)
