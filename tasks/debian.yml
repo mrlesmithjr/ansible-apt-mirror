@@ -10,3 +10,12 @@
   file:
     dest: "{{ apt_mirror_dir }}"
     state: directory
+
+- name: debian | configuring apt-mirror
+  template:
+    src: "etc/apt/mirror.list.j2"
+    dest: "/etc/apt/mirror.list"
+    owner: root
+    group: root
+    mode: 0644
+  notify: populate repo

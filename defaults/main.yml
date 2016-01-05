@@ -1,3 +1,15 @@
 ---
 # defaults file for ansible-apt-mirror
-apt_mirror_dir: /myrepo
+apt_mirror_dir: /myrepo  #define directory to use as repo
+apt_mirror_nthreads: 20  #defines the number of threads
+apt_mirror_repos:  #define list of repos to add
+  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse'
+  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted universe multiverse'
+  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-proposed main restricted universe multiverse'
+#  - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted universe multiverse'
+#  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-proposed main restricted universe multiverse'
+#  - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse'
