@@ -22,20 +22,28 @@ apt_mirror_nthreads: 20  #defines the number of threads
 apt_mirror_populate_repos: true  #defines if repos should be populated during install..can set to false and allow cron job to populate.
 apt_mirror_repos:  #define list of repos to add
 ## Ubuntu Trusty (14.04)
-  - 'deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
-  - 'deb http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
-  - 'deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+  - 'deb-amd64 http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
+  - 'deb-amd64 http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
+  - 'deb-amd64 http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
+  - 'deb-amd64 http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
+  - 'deb-amd64 http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+  - 'deb-i386 http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
+  - 'deb-i386 http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
+  - 'deb-i386 http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
+  - 'deb-i386 http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
+  - 'deb-i386 http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
   - 'deb-src http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse'
   - 'deb-src http://archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse'
   - 'deb-src http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse'
-#  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
-#  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-proposed main restricted universe multiverse'
+  - 'deb-src http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
 ## Ubuntu Precise (12.04)
-#  - 'deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu precise-security main restricted universe multiverse'
-#  - 'deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse'
+#  - 'deb-amd64 http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse'
+#  - 'deb-amd64 http://archive.ubuntu.com/ubuntu precise-security main restricted universe multiverse'
+#  - 'deb-amd64 http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse'
+#  - 'deb-i386 http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse'
+#  - 'deb-i386 http://archive.ubuntu.com/ubuntu precise-security main restricted universe multiverse'
+#  - 'deb-i386 http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse'
 apt_mirror_schedule:
   - name: 'apt-mirror updates'
     special_time: daily  #defines easy schedule....can be hourly, daily, weekly, monthly, annually, yearly or reboot..comment out if setting specific times
