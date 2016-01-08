@@ -29,4 +29,4 @@ set limit_rate {{ apt_mirror_limit_rate }}k
 {{ item }}
 {% endfor %}
 
-clean http://archive.ubuntu.com/ubuntu
+clean http://{{ apt_mirror_ubuntu_mirror }}
