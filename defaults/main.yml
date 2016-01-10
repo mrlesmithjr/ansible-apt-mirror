@@ -16,9 +16,9 @@ apt_mirror_client_repos:
   - 'deb-src http://{{ apt_mirror_repo_server }}/ubuntu {{ ansible_distribution_release }}-updates main restricted universe multiverse'
 #  - 'deb-src http://{{ apt_mirror_repo_server }}/ubuntu {{ ansible_distribution_release }}-proposed main restricted universe multiverse'
 #  - 'deb-src http://{{ apt_mirror_repo_server }}/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse'
-apt_mirror_dir: /myrepo  #define directory to use as repo
+apt_mirror_dir: /var/spool/apt-mirror  #define directory to use as repo...default is /var/spool/apt-mirror
 apt_mirror_limit_rate: 125  #defines download rate limit in KiloBytes/thread...ex. 1Mb=125Kb..so enter 125
-apt_mirror_nthreads: 20  #defines the number of threads
+apt_mirror_nthreads: 10  #defines the number of threads
 apt_mirror_populate_repos: true  #defines if repos should be populated during install..can set to false and allow cron job to populate.
 apt_mirror_repos:  #define list of repos to add
 ## Ubuntu Trusty (14.04)
@@ -58,4 +58,5 @@ apt_mirror_schedule_updates: true  #defines if repos should be updates on a sche
 apt_mirror_repo_server: 'apt-mirror.{{ pri_domain_name }}'  #defines server clients point to...either FQDN/hostname/IP
 apt_mirror_reset_client: false  #defines if clients sources.list should be reset to default
 apt_mirror_ubuntu_mirror: mirror.pnl.gov/ubuntu/  #define ubuntu mirror to use for ubuntu repos
+enable_apt_mirror_limit_rate: false  #defines if you would like to enable bandwidth limits defined in apt_mirror_limit_rate
 pri_domain_name: example.org

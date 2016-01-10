@@ -19,8 +19,10 @@ set nthreads     {{ apt_mirror_nthreads }}
 set nthreads     20
 {% endif %}
 set _tilde 0
-{% if apt_mirror_limit_rate is defined %}
+{% if enable_apt_mirror_limit_rate is defined and enable_apt_mirror_limit_rate %}
+{%   if apt_mirror_limit_rate is defined %}
 set limit_rate {{ apt_mirror_limit_rate }}k
+{%   endif %}
 {% endif %}
 #
 ############# end config ##############
