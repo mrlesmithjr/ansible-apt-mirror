@@ -37,7 +37,7 @@ apt_mirror_repos:  #define list of repos to add
   - 'deb-src http://{{ apt_mirror_ubuntu_mirror }} trusty-updates main restricted universe multiverse'
 #  - 'deb-src http://{{ apt_mirror_ubuntu_mirror }} trusty-proposed main restricted universe multiverse'
 #  - 'deb-src http://{{ apt_mirror_ubuntu_mirror }} trusty-backports main restricted universe multiverse'
-  - 'deb http://{{ apt_mirror_ubuntu_mirror }}' trusty main/debian-installer multiverse/debian-installer restricted/debian-installer universe/debian-installer'
+  - 'deb http://{{ apt_mirror_ubuntu_mirror }} trusty main/debian-installer multiverse/debian-installer restricted/debian-installer universe/debian-installer'
 ## Ubuntu Precise (12.04)
 #  - 'deb-amd64 http://{{ apt_mirror_ubuntu_mirror }} precise main restricted universe multiverse'
 #  - 'deb-amd64 http://{{ apt_mirror_ubuntu_mirror }} precise-security main restricted universe multiverse'
