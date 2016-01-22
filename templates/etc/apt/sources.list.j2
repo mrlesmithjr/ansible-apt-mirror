@@ -3,7 +3,7 @@
 {%   for item in apt_mirror_client_repos %}
 {{ item }}
 {%   endfor %}
-{% (elif enable_apt_mirror is defined and not enable_apt_mirror) or enable_apt_mirror is not defined %}
+{% elif (enable_apt_mirror is defined and not enable_apt_mirror) or enable_apt_mirror is not defined %}
 # Configured as default -- Reset after local apt-mirror configured
 {%   if ansible_distribution == "Ubuntu" %}
 deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse
