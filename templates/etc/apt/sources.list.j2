@@ -1,9 +1,9 @@
-{% if apt_mirror_reset_client is defined and not apt_mirror_reset_client %}
+{% if enable_apt_mirror is defined and enable_apt_mirror %}
 # Configured to point to upstream apt_mirror_repo_server
 {%   for item in apt_mirror_client_repos %}
 {{ item }}
 {%   endfor %}
-{% elif apt_mirror_reset_client is defined and apt_mirror_reset_client %}
+{% (elif enable_apt_mirror is defined and not enable_apt_mirror) or enable_apt_mirror is not defined %}
 # Configured as default -- Reset after local apt-mirror configured
 {%   if ansible_distribution == "Ubuntu" %}
 deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse

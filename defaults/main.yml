@@ -4,7 +4,7 @@ apache2_default_root: /var/www/html
 apt_mirror_apache_links:  #defines the uri of each repository used in apt_mirror_repos..ex. http://{{ apt_mirror_ubuntu_mirror }} will be archive.ubuntu.com/ubuntu
   - uri: '{{ apt_mirror_ubuntu_mirror }}'
     distro: ubuntu  #defines name of symlink..ensure to change apt_mirror_client_repos to match
-apt_mirror_client: false  #defines if running this role against a client...define this as an extra-var...example in README.md
+apt_mirror_client: false  #defines if running this role against a client...define this as an extra-var...example in README.md or in group_vars/all
 apt_mirror_client_repos:
   - 'deb http://{{ apt_mirror_repo_server }}/ubuntu {{ ansible_distribution_release }} main restricted universe multiverse'
   - 'deb http://{{ apt_mirror_repo_server }}/ubuntu {{ ansible_distribution_release }}-security main restricted universe multiverse'
@@ -57,7 +57,7 @@ apt_mirror_schedule:
     cron_file: apt-mirror
 apt_mirror_schedule_updates: true  #defines if repos should be updates on a schedule...defined in apt_mirror_schedule
 apt_mirror_repo_server: 'apt-mirror.{{ pri_domain_name }}'  #defines server clients point to...either FQDN/hostname/IP
-apt_mirror_reset_client: false  #defines if clients sources.list should be reset to default
 apt_mirror_ubuntu_mirror: mirror.pnl.gov/ubuntu/  #define ubuntu mirror to use for ubuntu repos
+enable_apt_mirror: false  #defines if apt_mirror is being used...if not client will be reset...
 enable_apt_mirror_limit_rate: false  #defines if you would like to enable bandwidth limits defined in apt_mirror_limit_rate
 pri_domain_name: example.org
