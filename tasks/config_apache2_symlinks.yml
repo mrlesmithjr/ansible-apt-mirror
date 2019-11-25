@@ -3,8 +3,6 @@
   file:
     src: "{{ apt_mirror_dir }}/mirror/{{ item['uri'] }}"
     dest: "{{ apache2_default_root }}/{{ item['distro'] }}"
-    owner: www-data
-    group: www-data
     state: link
     force: yes  #we do this because the src may/may not exist yet
   become: true
