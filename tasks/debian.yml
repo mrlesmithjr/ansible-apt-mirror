@@ -1,8 +1,8 @@
 ---
 - name: debian | installing packages
   apt:
-    name: "{{ item }}"
+    name: apt-mirror
     state: present
   become: true
-  with_items:
-    - apt-mirror
+  register: result
+  until: result is successful

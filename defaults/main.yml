@@ -1,6 +1,5 @@
 ---
 # defaults file for ansible-apt-mirror
-apache2_default_root: /var/www/html
 
 # Defines the uri of each repository used in apt_mirror_repos
 # ex.http://{{ apt_mirror_ubuntu_mirror }} will be archive.ubuntu.com/ubuntu
@@ -8,6 +7,8 @@ apt_mirror_apache_links:
   - uri: "{{ apt_mirror_ubuntu_mirror }}"
     # Defines name of symlink..ensure to change apt_mirror_client_repos to match
     distro: ubuntu
+
+apt_mirror_apache_root_dir: /var/www/html
 
 # Defines if running this role against a client.
 apt_mirror_client: false
@@ -26,6 +27,14 @@ apt_mirror_client_repos: []
 
 # Define directory to use as repo...default is /var/spool/apt-mirror
 apt_mirror_dir: /var/spool/apt-mirror
+
+apt_mirror_domain_name: example.org
+
+# Defines if apt_mirror is being used...if not client will be reset...
+apt_mirror_enable: false
+
+# Defines if you would like to enable bandwidth limits Defined in apt_mirror_limit_rate
+apt_mirror_enable_limit_rate: false
 
 # Defines download rate limit in KiloBytes/thread...ex. 1Mb=125Kb..so enter 125
 apt_mirror_limit_rate: 125
@@ -73,15 +82,7 @@ apt_mirror_schedule: []
 apt_mirror_schedule_updates: true
 
 # Defines server clients point to...either FQDN/hostname/IP
-apt_mirror_server: "apt-mirror.{{ pri_domain_name }}"
+apt_mirror_server: "apt-mirror.{{ apt_mirror_domain_name }}"
 
 # Define ubuntu mirror to use for ubuntu repos
 apt_mirror_ubuntu_mirror: mirror.pnl.gov/ubuntu/
-
-# Defines if apt_mirror is being used...if not client will be reset...
-enable_apt_mirror: false
-
-# Defines if you would like to enable bandwidth limits Defined in apt_mirror_limit_rate
-enable_apt_mirror_limit_rate: false
-
-pri_domain_name: example.org

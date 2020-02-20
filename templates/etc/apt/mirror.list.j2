@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+{{ ansible_managed|comment }}
 {% if apt_mirror_dir is defined %}
 set base_path    {{ apt_mirror_dir }}
 {% elif apt_mirror_dir is not defined %}
@@ -11,7 +11,7 @@ set nthreads     {{ apt_mirror_nthreads }}
 set nthreads     20
 {% endif %}
 set _tilde 0
-{% if enable_apt_mirror_limit_rate is defined and enable_apt_mirror_limit_rate %}
+{% if apt_mirror_enable_limit_rate is defined and apt_mirror_enable_limit_rate %}
 {%   if apt_mirror_limit_rate is defined %}
 set limit_rate {{ apt_mirror_limit_rate }}k
 {%   endif %}

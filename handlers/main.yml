@@ -3,6 +3,6 @@
 - name: populate repos
   command: apt-mirror
   become: true
-  when: >
-        apt_mirror_populate_repos is defined and
-        apt_mirror_populate_repos
+  when:
+    - apt_mirror_populate_repos is defined
+    - apt_mirror_populate_repos|bool
