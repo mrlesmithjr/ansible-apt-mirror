@@ -1,56 +1,26 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [ansible-apt-mirror](#ansible-apt-mirror)
-  - [Requirements](#requirements)
-  - [Vagrant](#vagrant)
-  - [Docker](#docker)
-  - [Role Variables](#role-variables)
-  - [Dependencies](#dependencies)
-  - [Example Playbook](#example-playbook)
-  - [License](#license)
-  - [Author Information](#author-information)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # ansible-apt-mirror
 
-Installs and configures apt-mirror (Local APT Repository).
-Also configures clients if extra-var passed.
+Ansible role to setup an APT mirror
+
+> NOTE: Installs and configures apt-mirror (Local APT Repository).
+> Also configures clients if extra-var passed.
+
+## Build Status
+
+### GitHub Actions
+
+![Molecule Test](https://github.com/mrlesmithjr/ansible-apt-mirror/workflows/Molecule%20Test/badge.svg)
+
+### Travis CI
+
+[![Build Status](https://travis-ci.org/mrlesmithjr/ansible-apt-mirror.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-apt-mirror)
 
 ## Requirements
 
-Lot's of disk space required for repos...At the time of putting this together
-Ubuntu Trusty w/defaults in this role requires 139GB+
+Lot's of disk space required for repos...At the time of putting this together Ubuntu Trusty w/defaults in this role requires 139GB+
 
-Install Ansible role requirements:
-
-```bash
-sudo ansible-galaxy install -r requirements.yml -f
-```
-
-## Vagrant
-
-Spin up Environment under Vagrant to test.
-
-```bash
-vagrant up
-```
-
-## Docker
-
-Spin up Docker container (apt mirror repos not populated...will update on cron schedule)
-
-```bash
-docker run -d -p 80:80 --name apt-mirror mrlesmithjr/apt-mirror
-```
-
-To immediately update cache (Will take a long time...so do not cancel)
-
-```bash
-docker exec -it apt-mirror apt-mirror
-```
+For any required Ansible roles, review:
+[requirements.yml](requirements.yml)
 
 ## Role Variables
 
@@ -58,20 +28,9 @@ docker exec -it apt-mirror apt-mirror
 
 ## Dependencies
 
-ansible-apache2 and mrlesmithjr.apache2 (Installed as part of requirements.yml)
-
 ## Example Playbook
 
-```yaml
-- hosts: servers
-  roles:
-    - role: ansible-apache2
-    - role: ansible-apt-mirror
-
-- hosts: clients
-  roles:
-    - { role: ansible-apt-mirror, apt_mirror_client: true }
-```
+[playbook.yml](playbook.yml)
 
 ## License
 
@@ -81,6 +40,8 @@ MIT
 
 Larry Smith Jr.
 
--   [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
--   [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
--   mrlesmithjr [at] gmail.com
+- [@mrlesmithjr](https://twitter.com/mrlesmithjr)
+- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
+- [http://everythingshouldbevirtual.com](http://everythingshouldbevirtual.com)
+
+> NOTE: Repo has been created/updated using [https://github.com/mrlesmithjr/cookiecutter-ansible-role](https://github.com/mrlesmithjr/cookiecutter-ansible-role) as a template.

@@ -6,11 +6,11 @@
     owner: root
     group: root
     mode: 0644
-    backup: yes  #we do this to have a copy of the original sources.list
+    backup: yes #we do this to have a copy of the original sources.list
   become: true
   register: client_configured
 
-- name: config_apt_mirror_client | updating apt-cache
+- name: config_apt_mirror_client | updating apt-cache # noqa 503
   apt:
     update_cache: yes
   become: true

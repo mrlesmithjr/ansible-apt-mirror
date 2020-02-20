@@ -13,8 +13,8 @@
     cron_file: "{{ item['cron_file'] }}"
   become: true
   with_items: "{{ apt_mirror_schedule }}"
-  when: >
-        (apt_mirror_schedule_updates is defined and
-        apt_mirror_schedule_updates) and
-        (apt_mirror_schedule is defined and
-        apt_mirror_schedule != [])
+  when:
+    - apt_mirror_schedule_updates is defined
+    - apt_mirror_schedule_updates|bool
+    - apt_mirror_schedule is defined
+    - apt_mirror_schedule != [])
