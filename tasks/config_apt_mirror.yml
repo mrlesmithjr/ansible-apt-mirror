@@ -3,19 +3,21 @@
   file:
     dest: "{{ apt_mirror_dir }}"
     state: directory
-  become: true
-
-- name: config_apt_mirror | ensuring permissions are set for apt_mirror_dir
-  file:
-    dest: "{{ apt_mirror_dir }}"
     owner: apt-mirror
     group: apt-mirror
-    mode: 0755
-    state: directory
-    recurse: yes
   become: true
-  tags:
-    - reset_apt_mirror_permissions
+
+# - name: config_apt_mirror | ensuring permissions are set for apt_mirror_dir
+#   file:
+#     dest: "{{ apt_mirror_dir }}"
+#     owner: apt-mirror
+#     group: apt-mirror
+#     mode: 0755
+#     state: directory
+#     recurse: yes
+#   become: true
+#   tags:
+#     - reset_apt_mirror_permissions
 
 - name: config_apt_mirror | configuring apt-mirror
   template:
