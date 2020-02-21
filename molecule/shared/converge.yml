@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    apt_mirror_domain_name: vagrant.local
+    apt_mirror_populate_repos: false
+  tasks:
+    - name: "Include ansible-apache2"
+      include_role:
+        name: "ansible-apache2"
+    - name: "Include ansible-apt-mirror"
+      include_role:
+        name: "ansible-apt-mirror"
