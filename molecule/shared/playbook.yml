@@ -1,8 +1,0 @@
----
-- name: Converge
-  hosts: all
-  vars:
-    apt_mirror_domain_name: vagrant.local
-  roles:
-    - role: ansible-apache2
-    - role: ansible-apt-mirror
