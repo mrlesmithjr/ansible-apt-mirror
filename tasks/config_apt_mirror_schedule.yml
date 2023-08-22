@@ -17,4 +17,4 @@
     - apt_mirror_schedule_updates is defined
     - apt_mirror_schedule_updates|bool
     - apt_mirror_schedule is defined
-    - apt_mirror_schedule != [])
+    - apt_mirror_schedule != []
